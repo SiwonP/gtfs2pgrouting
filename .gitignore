@@ -2,3 +2,7 @@
 *.d
 *~
 gtfs2pgrouting
+.vscode
+.settings
+.cproject
+.project
