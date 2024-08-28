@@ -223,7 +223,8 @@ int main(int argc, char **argv)
 	parse_args(argc, argv, options, &arguments);
 	g_verbose = arguments.verbose;
 
-	if (arguments.help)
+	// if help is required or no arguments concerning the db is passed
+	if (arguments.help || arguments.db.host == NULL)
 	{
 		print_help();
 		return 1;
