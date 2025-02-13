@@ -34,6 +34,16 @@ const char *GTFS_TABLENAME[] = {"agency",
 								"stop_times",
 								"frequencies"};
 
+const char *GTFS_TEMP_TABLENAME[] = {"tmp_agency",
+								"tmp_stops",
+								"tmp_routes",
+								"tmp_calendar",
+								"tmp_calendar_dates",
+								"tmp_shapes",
+								"tmp_trips",
+								"tmp_stop_times",
+								"tmp_frequencies"};								
+
 int import_from_folder(PGconn *conn, char *schema, char *folder_path)
 {
 	GTFS_FILE i;

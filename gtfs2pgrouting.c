@@ -36,11 +36,12 @@ const char options_help[] =
 	"\t\t-t format\tType of GTFS input. Options are: 'folder', 'zip' (Default is 'folder')\n"
 	"\t\t-s schema\tSchema for grouping all gtfs tables (Default is 'gtfs')\n"
 	"\t\t-D \t\tSpecify if the gtfs tables are already created, used to append to existing gtfs data\n"
+	"\t\t-m \t\tMerging the input data to existing tables\n"
 	"\t\t-h \t\tShow this help";
 /* A description of the arguments we accept. */
 // static char args_doc[] = "INPUT_SOURCE";
 
-const char options[] = "d:u:p:H:P:vt:s:Dh";
+const char options[] = "d:u:p:H:P:vt:s:Dmh";
 
 void print_help()
 {
@@ -84,6 +85,7 @@ struct arguments
 	int verbose;
 	char *format;
 	int data_only;
+	int merge;
 	char help;
 	database_settings db;
 };
@@ -185,6 +187,9 @@ static void parse_args(int argc, char *argv[], const char *options, struct argum
 			args->data_only = 1;
 			break;
 
+		case 'm':
+			args->merge = 1;
+
 		case 'h':
 			args->help = 1;
 
@@ -215,6 +220,7 @@ int main(int argc, char **argv)
 	arguments.format = "folder";
 	arguments.schema = "gtfs";
 	arguments.data_only = 0;
+	arguments.merge = 0;
 	arguments.help = 0;
 
 	/* Parse our arguments; every option seen by parse_opt will
